@@ -13,10 +13,6 @@ const TaskSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    inWork: {
-      type: String,
-      required: true,
-    },
     expirationDate: {
       type: String,
       required: true,
