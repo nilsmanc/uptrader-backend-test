@@ -1,4 +1,11 @@
 import express from 'express'
+import mongoose from 'mongoose'
+import { MONGODB } from './variables.js'
+
+mongoose
+  .connect(MONGODB)
+  .then(() => console.log('Database OK'))
+  .catch((err) => console.log('Database error', err))
 
 const app = express()
 
