@@ -17,7 +17,7 @@ export const getTaskComments = async (req, res) => {
   }
 }
 
-export const getCommentComment = async (req, res) => {
+export const getCascadeComments = async (req, res) => {
   const commentId = req.params.id
 
   try {
@@ -53,7 +53,7 @@ export const createTaskComment = async (req, res) => {
   }
 }
 
-export const createCommentComment = async (req, res) => {
+export const createCascadeComment = async (req, res) => {
   try {
     const doc = new CommentModel({
       text: req.body.text,
