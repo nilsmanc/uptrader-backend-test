@@ -28,6 +28,7 @@ app.get('/tasks', TaskController.getAll)
 app.post('/tasks', TaskController.create)
 app.get('/tasks/:id', TaskController.getOne)
 app.get('/tasks/project/:id', TaskController.getProjectTasks)
+app.patch('/tasks/:id', TaskController.update)
 
 app.get('/subtasks', SubtaskController.getTaskSubtasks)
 app.post('/subtasks', SubtaskController.create)

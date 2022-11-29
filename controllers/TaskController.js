@@ -1,4 +1,4 @@
-import TaskModel from '../models/Taks.js'
+import TaskModel from '../models/Task.js'
 
 export const getAll = async (req, res) => {
   try {
@@ -49,7 +49,7 @@ export const getProjectTasks = async (req, res) => {
 export const create = async (req, res) => {
   try {
     const doc = new TaskModel({
-      number: req.body.title,
+      number: req.body.number,
       title: req.body.title,
       description: req.body.description,
       expirationDate: req.body.expirationDate,
@@ -66,6 +66,37 @@ export const create = async (req, res) => {
 
     res.status(500).json({
       message: 'Failed to create task',
+    })
+  }
+}
+
+export const update = async (req, res) => {
+  try {
+    const taskId = req.params.id
+
+    await TaskModel.updateOne(
+      {
+        _id: taskId,
+      },
+      {
+        number: req.body.number,
+        title: req.body.title,
+        description: req.body.description,
+        expirationDate: req.body.expirationDate,
+        project: req.body.project,
+        priority: req.body.priority,
+        status: req.body.status,
+      },
+    )
+
+    res.json({
+      success: true,
+    })
+  } catch (err) {
+    console.log(err)
+
+    res.status(500).json({
+      message: 'Failed to update task',
     })
   }
 }
