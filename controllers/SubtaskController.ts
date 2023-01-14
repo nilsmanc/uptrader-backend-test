@@ -1,6 +1,8 @@
-import SubtaskModel from '../models/Subtask.js'
+import { Request, Response } from 'express'
 
-export const getTaskSubtasks = async (req, res) => {
+import SubtaskModel from '../models/Subtask'
+
+export const getTaskSubtasks = async (req: Request, res: Response) => {
   const taskId = req.params.id
 
   try {
@@ -17,7 +19,7 @@ export const getTaskSubtasks = async (req, res) => {
   }
 }
 
-export const create = async (req, res) => {
+export const create = async (req: Request, res: Response) => {
   try {
     const doc = new SubtaskModel({
       title: req.body.title,

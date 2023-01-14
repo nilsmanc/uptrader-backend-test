@@ -1,6 +1,8 @@
-import CommentModel from '../models/Comments.js'
+import { Request, Response } from 'express'
 
-export const getTaskComments = async (req, res) => {
+import CommentModel from '../models/Comment'
+
+export const getTaskComments = async (req: Request, res: Response) => {
   const taskId = req.params.id
 
   try {
@@ -17,7 +19,7 @@ export const getTaskComments = async (req, res) => {
   }
 }
 
-export const getCascadeComments = async (req, res) => {
+export const getCascadeComments = async (req: Request, res: Response) => {
   const commentId = req.params.id
 
   try {
@@ -34,7 +36,7 @@ export const getCascadeComments = async (req, res) => {
   }
 }
 
-export const createTaskComment = async (req, res) => {
+export const createTaskComment = async (req: Request, res: Response) => {
   try {
     const doc = new CommentModel({
       text: req.body.text,
@@ -53,7 +55,7 @@ export const createTaskComment = async (req, res) => {
   }
 }
 
-export const createCascadeComment = async (req, res) => {
+export const createCascadeComment = async (req: Request, res: Response) => {
   try {
     const doc = new CommentModel({
       text: req.body.text,

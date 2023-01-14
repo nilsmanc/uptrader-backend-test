@@ -1,8 +1,10 @@
-import TaskModel from '../models/Task.js'
+import { Request, Response } from 'express'
 
-export const getAll = async (req, res) => {
+import TaskModel from '../models/Task'
+
+export const getAll = async (req: Request, res: Response) => {
   try {
-    const tasks = await TodoModel.find().populate('Project').exec()
+    const tasks = await TaskModel.find().populate('Project').exec()
 
     res.json(tasks)
   } catch (err) {
@@ -13,7 +15,7 @@ export const getAll = async (req, res) => {
   }
 }
 
-export const getOne = async (req, res) => {
+export const getOne = async (req: Request, res: Response) => {
   try {
     const taskId = req.params.id
 
@@ -29,7 +31,7 @@ export const getOne = async (req, res) => {
   }
 }
 
-export const getProjectTasks = async (req, res) => {
+export const getProjectTasks = async (req: Request, res: Response) => {
   const projectId = req.params.id
 
   try {
@@ -46,7 +48,7 @@ export const getProjectTasks = async (req, res) => {
   }
 }
 
-export const create = async (req, res) => {
+export const create = async (req: Request, res: Response) => {
   try {
     const doc = new TaskModel({
       number: req.body.number,
@@ -70,7 +72,7 @@ export const create = async (req, res) => {
   }
 }
 
-export const update = async (req, res) => {
+export const update = async (req: Request, res: Response) => {
   try {
     const taskId = req.params.id
 

@@ -1,6 +1,8 @@
-import ProjectModel from '../models/Project.js'
+import { Request, Response } from 'express'
 
-export const getAll = async (req, res) => {
+import ProjectModel from '../models/Project'
+
+export const getAll = async (req: Request, res: Response) => {
   try {
     const projects = await ProjectModel.find().exec()
 
@@ -13,7 +15,7 @@ export const getAll = async (req, res) => {
   }
 }
 
-export const create = async (req, res) => {
+export const create = async (req: Request, res: Response) => {
   try {
     const doc = new ProjectModel({
       title: req.body.title,
@@ -31,15 +33,15 @@ export const create = async (req, res) => {
   }
 }
 
-export const remove = async (req, res) => {
+export const remove = async (req: Request, res: Response) => {
   try {
     const projectId = req.params.id
 
     ProjectModel.findOneAndDelete(
       {
-        _id: profileId,
+        _id: projectId,
       },
-      (err, doc) => {
+      (err: Error, doc: Document) => {
         if (!doc) {
           return res.status(404).json({
             message: 'Project not found',

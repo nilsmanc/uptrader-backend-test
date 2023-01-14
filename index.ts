@@ -2,16 +2,16 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 
-import { MONGODB } from './variables.js'
+import { MONGODB } from './variables'
 import {
   CommentsController,
   ProjectController,
   SubtaskController,
   TaskController,
-} from './controllers/index.js'
+} from './controllers/index'
 
 mongoose
-  .connect(MONGODB)
+  .connect(MONGODB as string)
   .then(() => console.log('Database OK'))
   .catch((err) => console.log('Database error', err))
 
@@ -38,9 +38,6 @@ app.post('/taskcomments', CommentsController.createTaskComment)
 app.get('/cascadecomments', CommentsController.getCascadeComments)
 app.post('/cascadecomments', CommentsController.createCascadeComment)
 
-app.listen(4444, (err) => {
-  if (err) {
-    return console.log(err)
-  }
+app.listen(4444, () => {
   console.log('Server OK')
 })

@@ -1,6 +1,12 @@
 import mongoose from 'mongoose'
 
-const CommentSchema = new mongoose.Schema(
+interface Comment extends Document {
+  text: string
+  task: object
+  comment: object
+}
+
+const CommentSchema = new mongoose.Schema<Comment>(
   {
     text: {
       type: String,
@@ -20,4 +26,4 @@ const CommentSchema = new mongoose.Schema(
   },
 )
 
-export default mongoose.model('Comment', CommentSchema)
+export default mongoose.model<Comment>('Comment', CommentSchema)

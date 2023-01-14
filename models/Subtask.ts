@@ -1,6 +1,15 @@
 import mongoose from 'mongoose'
 
-const SubTaskSchema = new mongoose.Schema(
+interface SubTask extends Document {
+  title: string
+  description: string
+  inWork: string
+  expirationDate: string
+  task: object
+  priority: string
+}
+
+const SubTaskSchema = new mongoose.Schema<SubTask>(
   {
     title: {
       type: String,
@@ -28,4 +37,4 @@ const SubTaskSchema = new mongoose.Schema(
   },
 )
 
-export default mongoose.model('Subtask', SubTaskSchema)
+export default mongoose.model<SubTask>('Subtask', SubTaskSchema)

@@ -1,5 +1,15 @@
 import mongoose from 'mongoose'
 
+interface Task extends Document {
+  number: string
+  title: string
+  description: string
+  expirationDate: string
+  project: object
+  priority: string
+  status: string
+}
+
 const TaskSchema = new mongoose.Schema(
   {
     number: {
