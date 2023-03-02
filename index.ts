@@ -3,12 +3,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 
 import { MONGODB } from './variables'
-import {
-  CommentsController,
-  ProjectController,
-  SubtaskController,
-  TaskController,
-} from './controllers/index'
+import { CommentsController, ProjectController, TaskController } from './controllers/index'
 
 mongoose
   .connect(MONGODB as string)
@@ -29,9 +24,6 @@ app.post('/tasks', TaskController.create)
 app.get('/tasks/:id', TaskController.getOne)
 app.get('/tasks/project/:id', TaskController.getProjectTasks)
 app.patch('/tasks/:id', TaskController.update)
-
-app.get('/subtasks', SubtaskController.getTaskSubtasks)
-app.post('/subtasks', SubtaskController.create)
 
 app.get('/taskcomments', CommentsController.getTaskComments)
 app.post('/taskcomments', CommentsController.createTaskComment)
