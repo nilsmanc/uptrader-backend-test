@@ -25,10 +25,8 @@ app.get('/tasks/:id', TaskController.getOne)
 app.get('/tasks/project/:id', TaskController.getProjectTasks)
 app.patch('/tasks/:id', TaskController.update)
 
-app.get('/taskcomments', CommentsController.getTaskComments)
-app.post('/taskcomments', CommentsController.createTaskComment)
-app.get('/cascadecomments', CommentsController.getCascadeComments)
-app.post('/cascadecomments', CommentsController.createCascadeComment)
+app.get('/comments', CommentsController.getComments)
+app.post('/comments', CommentsController.createComment)
 
 app.listen(4444, () => {
   console.log('Server OK')

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-interface Project extends Document {
+export interface Project extends Document {
   title: string
 }
 

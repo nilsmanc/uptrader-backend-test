@@ -1,16 +1,17 @@
 import mongoose from 'mongoose'
+import { Project } from './Project'
 
-interface Task extends Document {
+export interface Task extends Document {
   number: string
   title: string
   description: string
   expirationDate: string
-  project: object
+  project: Project
   priority: string
   status: string
 }
 
-const TaskSchema = new mongoose.Schema(
+const TaskSchema = new mongoose.Schema<Task>(
   {
     number: {
       type: String,
@@ -39,4 +40,4 @@ const TaskSchema = new mongoose.Schema(
   },
 )
 
-export default mongoose.model('Task', TaskSchema)
+export default mongoose.model<Task>('Task', TaskSchema)
