@@ -51,13 +51,9 @@ export const getProjectTasks = async (req: Request, res: Response) => {
 export const create = async (req: Request, res: Response) => {
   try {
     const doc = new TaskModel({
-      number: req.body.number,
       title: req.body.title,
       description: req.body.description,
-      expirationDate: req.body.expirationDate,
       project: req.body.project,
-      priority: req.body.priority,
-      status: req.body.status,
     })
 
     const task = await doc.save()

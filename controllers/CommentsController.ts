@@ -19,6 +19,23 @@ export const getComments = async (req: Request, res: Response) => {
   }
 }
 
+export const getTaskComments = async (req: Request, res: Response) => {
+  const taskId = req.params.id
+
+  try {
+    const tasks = await CommentModel.find({ task: { _id: taskId } })
+      .populate('task')
+      .exec()
+
+    res.json(tasks)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json({
+      message: 'Failed to get tasks',
+    })
+  }
+}
+
 export const createComment = async (req: Request, res: Response) => {
   try {
     const doc = new CommentModel({

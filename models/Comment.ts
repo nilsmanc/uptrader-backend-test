@@ -1,9 +1,10 @@
 import mongoose from 'mongoose'
 
+import { Task } from './Task'
+
 interface Comment extends Document {
   text: string
-  task: object
-  comment: object
+  task: Task
 }
 
 const CommentSchema = new mongoose.Schema<Comment>(
@@ -15,10 +16,6 @@ const CommentSchema = new mongoose.Schema<Comment>(
     task: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Task',
-    },
-    comment: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Comment',
     },
   },
   {

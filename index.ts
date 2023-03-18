@@ -17,7 +17,7 @@ app.use(express.json())
 
 app.get('/projects', ProjectController.getAll)
 app.post('/projects', ProjectController.create)
-app.delete('/projects', ProjectController.remove)
+app.delete('/projects/:id', ProjectController.remove)
 
 app.get('/tasks', TaskController.getAll)
 app.post('/tasks', TaskController.create)
@@ -26,6 +26,7 @@ app.get('/tasks/project/:id', TaskController.getProjectTasks)
 app.patch('/tasks/:id', TaskController.update)
 
 app.get('/comments', CommentsController.getComments)
+app.get('/comments/task/:id', CommentsController.getTaskComments)
 app.post('/comments', CommentsController.createComment)
 
 app.listen(4444, () => {
