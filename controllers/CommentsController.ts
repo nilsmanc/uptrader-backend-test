@@ -2,23 +2,6 @@ import { Request, Response } from 'express'
 
 import CommentModel from '../models/Comment'
 
-export const getComments = async (req: Request, res: Response) => {
-  const taskId = req.params.id
-
-  try {
-    const comments = await CommentModel.find({ task: { _id: taskId } })
-      .populate('task')
-      .exec()
-
-    res.json(comments)
-  } catch (err) {
-    console.log(err)
-    res.status(500).json({
-      message: 'Failed to get comments',
-    })
-  }
-}
-
 export const getTaskComments = async (req: Request, res: Response) => {
   const taskId = req.params.id
 
